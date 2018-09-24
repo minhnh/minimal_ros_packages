@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="msg_minimal" type="msg_test_node" name="msg_test_node" output="screen">
+    </node>
+</launch>
