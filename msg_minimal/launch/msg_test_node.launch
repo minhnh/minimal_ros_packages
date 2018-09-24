@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="minimal_topic" default="minimal_topic" />
+
     <node pkg="msg_minimal" type="msg_test_node" name="msg_test_node" output="screen">
+        <param name="minimal_topic" type="string" value="$(arg minimal_topic)" />
     </node>
 </launch>

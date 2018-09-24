@@ -1,9 +1,40 @@
 #!/usr/bin/env python2
 import rospy
+from msg_minimal.msg import Minimal
+
+
+class MinimalMsgTest(object):
+    def __init__(self, minimal_topic):
+        # TODO(minhnh) subscribes to 'minimal_topic' of type Minimal message and with callback self._minimal_cb
+        self._minimal_sub = None
+        self._result = -1.0
+
+    def _minimal_cb(self, msg):
+        if getattr(msg, 'a', None) is None:
+            rospy.logwarn('message does not have field "a" of type "float32"')
+            return
+
+        if getattr(msg, 'b', None) is None:
+            rospy.logwarn('message does not have field "b" of type "float32"')
+            return
+
+        if getattr(msg, 'operation', None) is None:
+            rospy.logwarn('message does not have field "operation" of type "string"')
+            return
+
+        # TODO(minhnh): calculate self._result based on numbers and operation specified in Minimal.msg
+        # operation can be sum, subtract, multiply, divide
+        raise NotImplementedError()
+
+    def print_result(self):
+        rospy.loginfo('result: %.3f', self._result)
 
 
 if __name__ == '__main__':
     rospy.init_node('msg_test_node')
+    param_minimal_topic = rospy.get_param('~minimal_topic', 'minimal_topic')
 
+    minimal_test = MinimalMsgTest(param_minimal_topic)
     while not rospy.is_shutdown():
-        rospy.sleep(1.0)    # sleep for 1 second
+        minimal_test.print_result()
+        rospy.sleep(1.0)                # sleep for 1 second
