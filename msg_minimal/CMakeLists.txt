@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
 # Message files
 add_message_files(
   FILES
-  Minimal.msg
+    Minimal.msg
 )
 generate_messages(
   DEPENDENCIES
