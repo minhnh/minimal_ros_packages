@@ -10,12 +10,20 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+# setup Python package
 catkin_python_setup()
 
+# package specific setup, will be more relevant for C++ code, but required nonetheless
 catkin_package()
 
-# install(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+# install executables
+install(PROGRAMS
+  scripts/talker_node
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+# install launch files
+install(DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/ros/launch
+)
 

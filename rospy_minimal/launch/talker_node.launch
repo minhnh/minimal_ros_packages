@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="talk_topic" default="talk" />
+    <arg name="listen_topic" default="listen" />
+
+    <node pkg="rospy_minimal" type="talker_node" name="talker_node" output="screen">
+        <param name="talk_topic" type="string" value="$(arg talk_topic)" />
+        <param name="listen_topic" type="string" value="$(arg listen_topic)" />
+    </node>
+</launch>
