@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>srv_minimal</name>
+  <name>smach_minimal</name>
   <version>0.0.1</version>
   <description>minimal package with message generation for a service</description>
 
