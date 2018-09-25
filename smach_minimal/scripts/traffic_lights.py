@@ -8,14 +8,15 @@ import smach_ros
 # define state Red
 class Red(smach.State):
     def __init__(self):
-        smach.State.__init__(self, outcomes=['Stop','Wait','Go'])
+        smach.State.__init__(self, outcomes=['Stop'])
         self.counter = 0
 
+
     def execute(self, userdata):
-        rospy.loginfo('Executing state Red')
+        rospy.loginfo('***Executing state Red***')
         if self.counter < 3:
             self.counter += 1
-            rospy.sleep(10)
+            rospy.sleep(5)
             return 'Stop'
         else:
             return 'Wait'
@@ -24,27 +25,30 @@ class Red(smach.State):
 # define state Yellow
 class Yellow(smach.State):
     def __init__(self):
-        smach.State.__init__(self, outcomes=['Stop','Wait','Go'])
+        smach.State.__init__(self, outcomes=['Wait'])
 
     def execute(self, userdata):
-        rospy.loginfo('Executing state Yellow')
-        rospy.sleep(5)
+        rospy.loginfo('===Executing state Yellow===')
+        rospy.sleep(2)
         return 'Wait'
+
 
 
 #define state green
 class Green(smach.State):
     def __init__(self):
-        smach.State.__init__(self, outcomes=['Stop', 'Wait', 'Go'])
+        smach.State.__init__(self, outcomes=['Go'])
+
 
     def execute(self, userdata):
-        rospy.loginfo('Executing green state')
-        rospy.sleep(10)
+        rospy.loginfo('...Executing green state...')
+        rospy.sleep(2)
         return 'Go'
 
 def main():
     rospy.init_node('traffic_lights')
 
+    # flag=0
     # Create a SMACH state machine
     sm = smach.StateMachine(outcomes=['Go'])
 
@@ -56,7 +60,7 @@ def main():
         smach.StateMachine.add('Yellow', Yellow(),
                                transitions={'Wait':'Green'})
         smach.StateMachine.add('Green', Green(),
-                               transitions={'Go':'Yellow', 'Wait':'Red'})
+                               transitions={'Go':'Yellow'})
 
 
     # Execute SMACH plan
@@ -65,5 +69,4 @@ def main():
 
 
 if __name__ == '__main__':
-    while not rospy.is_shutdown():
-        main()
+    main()

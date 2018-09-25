@@ -2,7 +2,7 @@
 <launch>
     <!-- <arg name="minimal_service_name" default="minimal_server" /> -->
 
-    <node pkg="smach_minimal" type="traffic_lights" name="traffic_lights" output="screen">
+    <node pkg="smach_minimal" type="traffic_lights.py" name="traffic_lights" output="screen">
         <!-- <param name="minimal_service_name" type="string" value="$(arg minimal_service_name)" /> -->
     </node>
 </launch>
