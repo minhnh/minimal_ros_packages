@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="minimal_service_name" default="minimal_server" />
+
+    <node pkg="srv_minimal" type="srv_test_python_server" name="srv_test_python_server" output="screen">
+        <param name="minimal_service_name" type="string" value="$(arg minimal_service_name)" />
+    </node>
+</launch>
