@@ -9,14 +9,15 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
+
 # package specific setup, will be more relevant for C++ code, but required nonetheless
 catkin_package(
-  CATKIN_DEPENDS message_runtime
+   CATKIN_DEPENDS message_runtime
 )
 
 # install executables
 install(PROGRAMS
-  scripts/srv_test_python_server
+  scripts/traffic_lights
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -24,4 +25,3 @@ install(PROGRAMS
 install(DIRECTORY launch/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/ros/launch
 )
-
