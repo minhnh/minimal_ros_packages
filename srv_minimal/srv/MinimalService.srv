@@ -1,0 +1,4 @@
+# TODO(minhnh) request should be msg_minimal/Minimal, and response should be float32
+std_msgs/Empty empty    # request
+---
+std_msgs/Empty empty    # response

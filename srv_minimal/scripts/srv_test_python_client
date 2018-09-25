@@ -1,0 +1,48 @@
+#!/usr/bin/env python2
+import argparse
+import rospy
+from srv_minimal.srv import MinimalServiceRequest, MinimalService
+
+
+def main(args):
+    # wait for service for 5 seconds then create ServiceProxy
+    timeout = 5.0
+    try:
+        rospy.wait_for_service(args.service_name, timeout=timeout)
+    except rospy.ROSException:
+        print('failed to wait for service "%s" after "%d" seconds' % (args.service_name, timeout))
+        return
+
+    minimal_service_proxy = rospy.ServiceProxy(args.service_name, MinimalService)
+    request = MinimalServiceRequest()
+    if getattr(request, 'request', None) is None:
+        print('MinimalRequest does not have field "request" of type "minimal_msg/Minimal"')
+        return
+
+    request.request.a = args.a
+    request.request.b = args.b
+    request.request.operation = args.operation
+
+    try:
+        response = minimal_service_proxy(request)
+    except rospy.ServiceException as e:
+        print('service call failed: ' + e.message)
+        return
+
+    if getattr(response, 'result', None) is None:
+        print('MinimalServiceResponse does not have field "result" of type "float32"')
+        return
+
+    print('%.3f %s %.3f = %.3f' % (args.a, args.operation, args.b, response.result))
+    return
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Tool to test the minimal service')
+    parser.add_argument('--service-name', '-s', default='/minimal_server', help='name of the minimal service')
+    parser.add_argument('a', type=int, help='first number')
+    parser.add_argument('b', type=int, help='second number')
+    parser.add_argument('operation', type=str, help='operation')
+
+    args = parser.parse_args()
+    main(args)
