@@ -17,7 +17,7 @@ catkin_package(
 
 # install executables
 install(PROGRAMS
-  scripts/traffic_lights
+  scripts/traffic_lights.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
