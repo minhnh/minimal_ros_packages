@@ -11,7 +11,6 @@ class Red(smach.State):
         smach.State.__init__(self, outcomes=['Stop'])
         self.counter = 0
 
-
     def execute(self, userdata):
         rospy.loginfo('***Executing state Red***')
         if self.counter < 3:

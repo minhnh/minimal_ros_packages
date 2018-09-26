@@ -1,1 +1,3 @@
-std_msgs/Empty empty
+float32 a
+float32 b
+string operation
