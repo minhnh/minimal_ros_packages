@@ -34,7 +34,7 @@ def main():
     with sm:
         # Add states to the container
         smach.StateMachine.add('RED', Red(),
-                               transitions={'Stop':'Red'})
+                               transitions={'Stop':'RED'})
 
     # Execute SMACH plan
     outcome = sm.execute()
