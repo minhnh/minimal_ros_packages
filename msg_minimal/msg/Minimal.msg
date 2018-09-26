@@ -1,3 +1,1 @@
-float32 a
-float32 b
-string operation
+std_msgs/Empty empty

@@ -9,10 +9,6 @@ def handle_minimal_request(request):
         rospy.logerr('message does not have field "a" of type "msg_minimal/Minimal"')
         return
 
-    rospy.loginfo(request.request.a)
-    rospy.loginfo(request.request.b)
-    rospy.loginfo(request.request.operation)
-
     return MinimalServiceResponse()
 
 
@@ -21,6 +17,6 @@ if __name__ == '__main__':
     param_minimal_service_name = rospy.get_param('~minimal_service_name', 'minimal_server')
 
     # TODO(minhnh): create a service using "handle_minimal_request" as the callback
-    minimal_service = rospy.Service(param_minimal_service_name, MinimalService, handle_minimal_request)
+    minimal_service = None
     while not rospy.is_shutdown():
         rospy.sleep(1.0)                # sleep for 1 second
