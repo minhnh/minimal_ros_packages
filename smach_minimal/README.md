@@ -13,8 +13,8 @@ on [ROS documentation for `smach`](http://wiki.ros.org/smach) and the
 ├── README.md
 └── scripts
     └── traffic_lights.py
+```
 
-    ```
 ## TODOs
 TODO(minhnh): add state machine transition map
 * add `YELLOW` and `GREEN` states to simulate a traffic light
