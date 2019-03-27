@@ -2,6 +2,6 @@
 # and field 'empty_result' to 'result' of type 'float32'
 std_msgs/Empty empty_goal
 ---
-std_msgs/Empty empty_feedback
----
 std_msgs/Empty empty_result
+---
+std_msgs/Empty empty_feedback
