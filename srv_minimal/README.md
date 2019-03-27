@@ -22,7 +22,7 @@ Minimal working example for defining a new ROS service. More details on service 
 Compared to a bare ROS package, the following changes are needed:
 * add `message_generation` to `find_package()` under `COMPONENTS`
 * add `message_runtime` to `catkin_package()` under `CATKIN_DEPENDS`
-* add service file(s) (in this case [`MinimalService.srv`](srv/Minimal.srv), which need to be in the `srv` folder in
+* add service file(s) (in this case [`MinimalService.srv`](srv/MinimalService.srv), which need to be in the `srv` folder in
 package directory else will cause error):
 ```
 add_service_files(

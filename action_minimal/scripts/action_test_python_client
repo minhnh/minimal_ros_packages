@@ -20,16 +20,16 @@ def main(args):
         print('please modify Minimal.action to appropriate values"')
         return
 
-    action_goal.goal.a = args.a
-    action_goal.goal.b = args.b
+    action_goal.goal.a = args.x
+    action_goal.goal.b = args.y
     action_goal.goal.operation = args.operation
 
-    minimal_client.send_goal(action_goal)
-    if not minimal_client.wait_for_result(rospy.Duration(timeout)):
+    action_client.send_goal(action_goal)
+    if not action_client.wait_for_result(rospy.Duration(timeout)):
         print('failed to wait for result from server "%s" after "%d" seconds' % (args.action_name, timeout))
         return
 
-    action_result = minimal_client.get_result()
+    action_result = action_client.get_result()
     if getattr(action_result, 'result', None) is None:
         print('MinimalResult does not have field "result" of type "float32"')
         return
