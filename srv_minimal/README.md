@@ -8,12 +8,12 @@ Minimal working example for defining a new ROS service. More details on service 
 .
 ├── CMakeLists.txt
 ├── launch
-│   └── srv_test_server.launch
+│   └── srv_test_server.launch
 ├── package.xml
 ├── README.md
 ├── scripts
-│   ├── srv_test_python_client
-│   └── srv_test_python_server
+│   ├── srv_test_python_client
+│   └── srv_test_python_server
 └── srv
     └── MinimalService.srv
 ```
@@ -46,33 +46,12 @@ Dependencies on message generation need to be added:
 <exec_depend>message_runtime</exec_depend>
 ```
 
-## TODO's
-1. modify [`MinimalService.srv`](srv/MinimalService.srv) to have a `msg_minimal/Minimal` field named `request` as
-request, and a `float32` field named `result` as response.
-2. build and check in python
-```
-$ python2
-Python 2.7.12 (default, Dec  4 2017, 14:50:18)
-[GCC 5.4.0 20160609] on linux2
-Type "help", "copyright", "credits" or "license" for more information.
->>> from srv_minimal.srv import MinimalService, MinimalServiceResponse, MinimalServiceRequest
->>> req = MinimalServiceRequest()
->>> req.request
-a: 0.0
-b: 0.0
-operation: ''
->>> req.request.__class__
-<class 'msg_minimal.msg._Minimal.Minimal'>
->>> res = MinimalServiceResponse()
->>> res.result
-0.0
-```
-3. add service of type `srv_minimal/MinimalService` to the [`srv_test_python_server`](scripts/srv_test_python_server).
-4. launch [`srv_test_server.launch`](launch/srv_test_server.launch)
+## Running and testing the service
+* To start the service, launch [`srv_test_server.launch`](launch/srv_test_server.launch)
 ```
 $ roslaunch srv_minimal srv_test_server.launch
 ```
-5. execute the [`srv_test_python_client`](scripts/srv_test_python_client) script:
+* To test the service, execute the [`srv_test_python_client`](scripts/srv_test_python_client) script:
 ```
 $ ./srv_test_python_client 1 2 sum
 ```
@@ -93,3 +72,27 @@ optional arguments:
   --service-name SERVICE_NAME, -s SERVICE_NAME
                         name of the minimal service
 ```
+
+
+## Foundation course tasks
+
+* Modify [`MinimalService.srv`](srv/MinimalService.srv) to have a `msg_minimal/Minimal` field named `request` as
+request, and a `float32` field named `result` as response.
+* Build and check in Python. If all is well, the following commands should work:
+```
+$ python2
+Python 2.7.12 (default, Dec  4 2017, 14:50:18)
+[GCC 5.4.0 20160609] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from srv_minimal.srv import MinimalService, MinimalServiceResponse, MinimalServiceRequest
+>>> req = MinimalServiceRequest()
+>>> req.request
+a: 0.0
+b: 0.0
+operation: ''
+>>> res = MinimalServiceResponse()
+>>> res.result
+0.0
+```
+* Add service of type `srv_minimal/MinimalService` to the [`srv_test_python_server`](scripts/srv_test_python_server).
+* Handle arithmatic operation in `handle_minimal_request`, then return the appropriate `MinimalServiceResponse` object.

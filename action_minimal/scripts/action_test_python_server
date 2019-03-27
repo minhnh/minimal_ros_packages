@@ -1,20 +1,23 @@
 #!/usr/bin/env python2
 import rospy
 import actionlib
-from action_minimal.msg import MinimalAction
+from action_minimal.msg import MinimalAction, MinimalResult
 
 
 class MinimalActionServer(object):
     def __init__(self, server_name):
-        self._server = actionlib.SimpleActionServer(server_name, MinimalAction, self._execute_cb, False)
-        self._server.start()
+        # TODO(minhnh) create a 'SimpleActionServer' object using 'server_name', 'MinimalAction', and
+        #'self._execute_cb'
+        self._server = None
+        if self._server is not None:
+            self._server.start()
 
     def _execute_cb(self, goal):
         if getattr(goal, 'empty_goal', None) is not None:
             rospy.loginfo('please modify the `Minimal.action` to the appropriate fields for the task')
             self._server.set_aborted()
             return
-        # TODO(minhnh)
+        # TODO(minhnh) handle goal arithmetic operations and respond with result
         raise NotImplementedError()
 
 

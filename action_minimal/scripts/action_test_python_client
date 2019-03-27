@@ -34,7 +34,7 @@ def main(args):
         print('MinimalResult does not have field "result" of type "float32"')
         return
 
-    print('%.3f %s %.3f = %.3f' % (args.a, args.operation, args.b, action_result.result))
+    print('%.3f %s %.3f = %.3f' % (args.x, args.operation, args.y, action_result.result))
     return
 
 
