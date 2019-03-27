@@ -5,11 +5,11 @@
 .
 ├── CMakeLists.txt
 ├── launch
-│   └── talker_node.launch
+│   └── talker_node.launch
 ├── package.xml
 ├── README.md
 ├── scripts
-│   └── talker_node
+│   └── talker_node
 ├── setup.py
 └── src
     └── rospy_minimal
@@ -52,3 +52,30 @@ with [`talker_node.launch`](launch/talker_node.launch) would be:
 
 More details can be found on the ROS documentation for [`roslaunch` command line tool](http://wiki.ros.org/roslaunch)
 and for [launch file syntax](http://wiki.ros.org/roslaunch/XML).
+
+## Foundation course tasks
+* To test the node, launch `talker_node.launch`.
+```sh
+$ roslaunch rospy_minimal talker_node.launch
+```
+* Add a publisher of type `string` using the topic name stored in `self._talk_topic` variable.
+* In the `talk` function publish the string stored in `self._message`. Running `rostopic echo` on the talk topic
+should produce the stored string message:
+```sh
+$ rostopic echo /talk
+data: "hello world!"
+---
+```
+* Create a subscriber which listens to messages of type `string` using the topic name stored in `self._listen_topic`,
+and the `self._subscriber_cb` callback function.
+* Update `self._message` with data from the string messages in `self._subscriber_cb`. If all works well, when you
+publish on the `/listen` topic:
+```
+$ rostopic pub /listen std_msgs/String "data: 'oioi'"
+```
+the `/talk` topic will print the corresponding messages:
+```
+$ rostopic echo /talk
+data: "oioi"
+---
+```

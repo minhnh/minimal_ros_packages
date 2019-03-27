@@ -7,9 +7,9 @@ found on [ROS documentation for messages](https://wiki.ros.org/msg).
 .
 ├── CMakeLists.txt
 ├── launch
-│   └── msg_test_node.launch
+│   └── msg_test_node.launch
 ├── msg
-│   └── Minimal.msg
+│   └── Minimal.msg
 ├── package.xml
 ├── README.md
 └── scripts
@@ -45,8 +45,8 @@ Dependencies on message generation need to be added:
 ```
 
 ## ToDo's
-1. modify [`Minimal.msg`](msg/Minimal.msg) to have numeric `a`, `b` fields and string `operation`
-2. build and check in python
+* modify [`Minimal.msg`](msg/Minimal.msg) to have numeric `a`, `b` fields and string `operation`
+* build and check in python
 ```
 $ python2
 Python 2.7.12 (default, Dec  4 2017, 14:50:18)
@@ -61,10 +61,10 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> msg.operation
 ''
 ```
-3. add a subscriber to [`msg_test_node`](scripts/msg_test_node) which listens to `minimal_topic` of type
+* add a subscriber to [`msg_test_node`](scripts/msg_test_node) which listens to `minimal_topic` of type
 `msg_minimal/Minimal`
-4. launch [`msg_test_node.launch`](launch/msg_test_node.launch)
+* launch [`msg_test_node.launch`](launch/msg_test_node.launch)
 ```
 $ roslaunch msg_minimal msg_test_node.launch
 ```
-5. publish to the topic specified in step 3 the correct `msg_minimal/Minimal` message.
+* publish to the topic specified in step 3 the correct `msg_minimal/Minimal` message.
