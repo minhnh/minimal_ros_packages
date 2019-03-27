@@ -1,35 +1,33 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(srv_minimal)
+project(action_minimal)
 
 
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
-  message_generation
+  actionlib_msgs
   msg_minimal
 )
 
 # Message files
-add_service_files(
-  FILES
-    MinimalService.srv
+add_action_files(
+  DIRECTORY action
+  FILES Minimal.action
 )
 generate_messages(
-  DEPENDENCIES
-    std_msgs
-    msg_minimal
+  DEPENDENCIES actionlib_msgs std_msgs msg_minimal
 )
 
 # package specific setup, will be more relevant for C++ code, but required nonetheless
 catkin_package(
-  CATKIN_DEPENDS message_runtime
+  CATKIN_DEPENDS actionlib_msgs
 )
 
 # install executables
 install(PROGRAMS
-  scripts/srv_test_python_server
-  scripts/srv_test_python_client
+  scripts/action_test_python_server
+  scripts/action_test_python_client
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

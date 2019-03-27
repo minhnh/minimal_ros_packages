@@ -1,0 +1,7 @@
+# TODO(minhnh) change field 'empty_goal' to field 'goal' of type 'msg_minimal/Minimal'
+# and field 'empty_result' to 'result' of type 'float32'
+std_msgs/Empty empty_goal
+---
+std_msgs/Empty empty_feedback
+---
+std_msgs/Empty empty_result

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="minimal_action_name" default="minimal_server" />
+
+    <node pkg="action_minimal" type="action_test_python_server" name="action_test_python_server" output="screen">
+        <param name="minimal_action_name" type="string" value="$(arg minimal_action_name)" />
+    </node>
+</launch>

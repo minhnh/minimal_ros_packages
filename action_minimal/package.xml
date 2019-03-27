@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>action_minimal</name>
+  <version>0.0.1</version>
+  <description>minimal package with message generation for an action</description>
+
+  <maintainer email="robotics@mail.inf.h-brs.de">MAS Robotics</maintainer>
+
+  <license>GPLv3</license>
+
+  <author email="minhnh.91@gmail.com">Minh Nguyen</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>actionlib_msgs</build_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>message_generation</exec_depend>
+  <exec_depend>actionlib_msgs</exec_depend>
+  <exec_depend>msg_minimal</exec_depend>
+
+</package>

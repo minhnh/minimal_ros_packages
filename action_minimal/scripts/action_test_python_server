@@ -1,0 +1,27 @@
+#!/usr/bin/env python2
+import rospy
+import actionlib
+from action_minimal.msg import MinimalAction
+
+
+class MinimalActionServer(object):
+    def __init__(self, server_name):
+        self._server = actionlib.SimpleActionServer(server_name, MinimalAction, self._execute_cb, False)
+        self._server.start()
+
+    def _execute_cb(self, goal):
+        if getattr(goal, 'empty_goal', None) is not None:
+            rospy.loginfo('please modify the `Minimal.action` to the appropriate fields for the task')
+            self._server.set_aborted()
+            return
+        # TODO(minhnh)
+        raise NotImplementedError()
+
+
+if __name__ == '__main__':
+    rospy.init_node('action_test_node')
+    param_minimal_action_name = rospy.get_param('~minimal_action_name', 'minimal_server')
+
+    minimal_action = MinimalActionServer(param_minimal_action_name)
+    while not rospy.is_shutdown():
+        rospy.sleep(1.0)                # sleep for 1 second
