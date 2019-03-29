@@ -1,5 +1,9 @@
 # Minimal ROS package using `rospy`
 
+This tutorial will walk you through creating and testing simple publisher and subscriber for communicating ROS messages.
+For Python examples of ROS publishers and subscribers, please refer to the
+[ROS tutorial](http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber(python)).
+
 ## Folder structure
 ```
 .
