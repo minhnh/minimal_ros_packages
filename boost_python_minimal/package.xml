@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>boost_python_minimal</name>
+  <version>0.0.1</version>
+  <description>minimal package using Boost Python</description>
+
+  <maintainer email="robotics@mail.inf.h-brs.de">MAS Robotics</maintainer>
+
+  <license>GPLv3</license>
+
+  <author email="minhnh.91@gmail.com">Minh Nguyen</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>roscpp</depend>
+
+</package>

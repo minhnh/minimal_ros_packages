@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+import rospy
+from boost_python_minimal.talker import Talker
+from boost_python_minimal._cpp_wrapper import _print_string
+
+
+if __name__ == '__main__':
+    a = b'asdf'
+    _print_string(a)
+    _print_string(b'asdflkj')
+    rospy.init_node('talker_node')
+
+    # get parameters
+    talk_topic = rospy.get_param('~talk_topic', 'talk')
+    listen_topic = rospy.get_param('~listen_topic', 'listen')
+
+    # create Talker object and run node
+    talker = Talker(talk_topic, listen_topic)
+    while not rospy.is_shutdown():
+        talker.talk()
+        rospy.sleep(1.0)    # sleep for 1 second
