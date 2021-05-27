@@ -85,11 +85,6 @@ install(DIRECTORY include/${PROJECT_NAME}/
 )
 # install executables
 install(PROGRAMS
-  scripts/talker_node
+  scripts/bytes_example_test.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
-
-# install launch files
-install(DIRECTORY launch/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/ros/launch
 )
