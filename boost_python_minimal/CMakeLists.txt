@@ -11,11 +11,10 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-set(PY_MAJOR 3)
-set(PY_MINOR 8)
+find_package(Python3 REQUIRED COMPONENTS Development)
+set(BOOST_PYTHON_COMPONENT python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR})
 set(Boost_NO_BOOST_CMAKE ON)
-find_package(Boost REQUIRED COMPONENTS python${PY_MAJOR}${PY_MINOR})
-find_package(PythonLibs ${PY_MAJOR}.${PY_MINOR} REQUIRED)
+find_package(Boost REQUIRED COMPONENTS ${BOOST_PYTHON_COMPONENT})
 
 # setup Python package
 catkin_python_setup()
@@ -35,7 +34,7 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
-  ${PYTHON_INCLUDE_DIRS}
+  ${Python3_INCLUDE_DIRS}
 )
 
 # add 'boost_python_minimal' library
@@ -62,7 +61,7 @@ set_target_properties(_cpp_wrapper PROPERTIES
 target_link_libraries(_cpp_wrapper
   ${PROJECT_NAME}
   ${Boost_LIBRARIES}
-  ${PYTHON_LIBRARIES}
+  ${Python3_LIBRARIES}
   ${catkin_LIBRARIES}
 )
 
